@@ -1,5 +1,5 @@
 require 'adapter'
-require 'cassandra/0.7'
+require 'cassandra/1.0'
 
 module Adapter
   module Cassandra
