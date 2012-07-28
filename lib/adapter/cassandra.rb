@@ -4,11 +4,11 @@ require 'cassandra/1.0'
 module Adapter
   module Cassandra
     def read(key)
-      decode(client.get(options[:column_family], key_for(key)))
+      client.get(options[:column_family], key_for(key))
     end
 
     def write(key, value)
-      client.insert(options[:column_family], key_for(key), encode(value))
+      client.insert(options[:column_family], key_for(key), value)
     end
 
     def delete(key)
@@ -19,6 +19,7 @@ module Adapter
       client.clear_keyspace!
     end
 
+    # deprecated
     def encode(value)
       case value
       when String
